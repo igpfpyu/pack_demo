@@ -21,5 +21,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "path": "^0.12.7",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2"
+  }
 }
