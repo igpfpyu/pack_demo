@@ -46,13 +46,6 @@ module.exports={
         ]
     },
     plugins: [
-        // new htmlWebpackPlugin({
-        //     template: '/',
-        //     filename:"index.html",
-        //     chunks: ['index'],
-        //     hash:true,
-        //     inject:true
-        // })
         new htmlWebpackPlugin({
             template:path.resolve(__dirname, 'index.html'),
             title:"Deve",
