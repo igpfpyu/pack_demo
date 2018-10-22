@@ -22,11 +22,18 @@ module.exports={
                 exclude:path.resolve(__dirname, "node_module"),
                 loader:"babel-loader",
                 options:{
-                    presets:['@babel/preset-env', '@babel/preset-react']
+                    presets:['@babel/preset-env', '@babel/preset-react'],
+                    plugins:[
+                        ["import", {"libraryName":"antd", libraryDrectory:'es', style:'css'}]
+                    ]
                 }
             },{
                 test:/\.css$/i,
                 use:["style-loader", "css-loader"]
+            },{
+                test:/\.less$/i,
+                use:["style-loader", "css-loader", "less-loader"]
+
             },{
                 test:/\.(jpg|png|svg)$/i,
                 include: path.resolve(__dirname, 'src'),
