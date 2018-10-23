@@ -1,5 +1,8 @@
 const path=require('path');
 const htmlWebpackPlugin=require('html-webpack-plugin');
+const postCssImport=require('postcss-import');
+const autoPreFixer=require('autoprefixer');
+
 module.exports={
     devtool:'inline-source-map',
     mode:'development',
@@ -29,10 +32,28 @@ module.exports={
                 }
             },{
                 test:/\.css$/i,
-                use:["style-loader", "css-loader"]
+                use:[
+                    { loader: 'style-loader', options: { } },
+                    { loader: 'css-loader', options: {importLoaders:1} },
+
+                    /**
+                     * id: iw
+                     *
+                     *
+                     */
+                    {
+                        loader: 'postcss-loader',
+                        options:{
+                            plugins:[autoPreFixer({
+                                browsers:['last 5 versions']
+                            })],
+                        }
+                    },
+                    {loader:'less-loader',options:{}}
+                ]
             },{
                 test:/\.less$/i,
-                use:["style-loader", "css-loader", "less-loader"]
+                use:["style-loader", "css-loader","less-loader"]
 
             },{
                 test:/\.(jpg|png|svg)$/i,
@@ -52,6 +73,8 @@ module.exports={
             }
         ]
     },
+    optimization: {
+    },
     plugins: [
         new htmlWebpackPlugin({
             template:path.resolve(__dirname, 'index.html'),
@@ -60,8 +83,7 @@ module.exports={
             filename:"index.html",
             chunks: ['index'],
             hot:true
-        })
-
+        }),
     ],
     devServer: {
         contentBase:'/',
