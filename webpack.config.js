@@ -1,8 +1,11 @@
 const path=require('path');
+const webpack=require('webpack');
 const htmlWebpackPlugin=require('html-webpack-plugin');
 const postCssImport=require('postcss-import');
 const autoPreFixer=require('autoprefixer');
-
+const ExtractTextPlugin=require('extract-text-webpack-plugin');
+const MinCssExtract=require('mini-css-extract-plugin');
+const browserVersion= ['last 5 versions'];
 module.exports={
     devtool:'inline-source-map',
     mode:'development',
@@ -31,30 +34,28 @@ module.exports={
                     ]
                 }
             },{
-                test:/\.css$/i,
+                test:/\.(css|less)$/i,
                 use:[
-                    { loader: 'style-loader', options: { } },
-                    { loader: 'css-loader', options: {importLoaders:1} },
-
-                    /**
-                     * id: iw
-                     *
-                     *
-                     */
+                    MinCssExtract.loader,
                     {
-                        loader: 'postcss-loader',
+                        loader: "css-loader",
                         options:{
-                            plugins:[autoPreFixer({
-                                browsers:['last 5 versions']
-                            })],
+                            minisize:true
                         }
-                    },
-                    {loader:'less-loader',options:{}}
+                    },{
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: [
+                                postCssImport,
+                                autoPreFixer({
+                                    browsers:browserVersion
+                                })
+                            ]
+                        }
+                    },{
+                        loader:'less-loader'
+                    }
                 ]
-            },{
-                test:/\.less$/i,
-                use:["style-loader", "css-loader","less-loader"]
-
             },{
                 test:/\.(jpg|png|svg)$/i,
                 include: path.resolve(__dirname, 'src'),
@@ -65,7 +66,7 @@ module.exports={
                             limit:8192
                         }
                     }
-                ]
+                ],
             },{
                 test:/\.svg$/i,
                 include: path.resolve(__dirname, 'src/svg'),
@@ -76,14 +77,27 @@ module.exports={
     optimization: {
     },
     plugins: [
+        new MinCssExtract({filename:'css/[name].css?[hash]'}),
         new htmlWebpackPlugin({
             template:path.resolve(__dirname, 'index.html'),
             title:"Deve",
             inject:true,
             filename:"index.html",
-            chunks: ['index'],
-            hot:true
+            // chunks: ['index'],
+            hot:true,
+            chunksSortMode:"none"
         }),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: function () {
+                    return [
+                        autoPreFixer({
+                            browsers: browserVersion
+                        })
+                    ]
+                }
+            }
+        })
     ],
     devServer: {
         contentBase:'/',
