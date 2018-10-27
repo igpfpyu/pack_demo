@@ -3,7 +3,6 @@ const webpack=require('webpack');
 const htmlWebpackPlugin=require('html-webpack-plugin');
 const postCssImport=require('postcss-import');
 const autoPreFixer=require('autoprefixer');
-const ExtractTextPlugin=require('extract-text-webpack-plugin');
 const MinCssExtract=require('mini-css-extract-plugin');
 const browserVersion= ['last 5 versions'];
 module.exports={
