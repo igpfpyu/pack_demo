@@ -37,6 +37,15 @@ module.exports={
     module: {
         rules: [
             {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        attrs: ['img:src', 'img:data-src', 'audio:src'],
+                        minimize: true
+                    }
+                }
+            },{
                 test:/\.(js|jsx)$/i,
                 exclude:path.resolve(__dirname, "node_modules"),
                 loader:"babel-loader",
@@ -72,16 +81,17 @@ module.exports={
                 ]
             },{
                 test:/\.(jpg|png|svg)$/i,
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
                 use:[
                     {
                         loader:'url-loader',
                         options:{
-                            fillback:"responsive-loader",
+                            // fillback:"file-loader",
+                            // outputPath:'images',
+                            name: 'images/[name].[hash:4].[ext]',
                             limit:8192,
-                            name: '[path][name].[hash:4].[ext]',
-                            outputPath:'images/'
+                            // publicPath:'dist/images'
                         }
                     }
                 ],
@@ -93,17 +103,17 @@ module.exports={
         ]
     },
     optimization: {
-        minimize:true,
+        minimize:strArgn ? false: true,
         minimizer: [
             new uglifyjsPlugin({
                 // cache:true,
                 // minify(file, sourceMap){},
                 // parallel:true, //类型：Boolean | Number默认值：false 使用多进程并行运行来提高构建速度。 默认并发运行数：os.cpus().length - 1。
                 uglifyOptions:{
-                    compress:true,
+                    compress:false,
                     // unsafe_comps:true, //(默认 false) -- 保留< 和 <=不被换成 > 和 >=。假如某些运算对象是用get或 valueOfobject得出的时候，转换可能会不安全，可能会引起运算对象的改变。此选项只有当 comparisons和unsafe_comps 都设为true时才会启用。
                     warning:false,       //当删除没有用处的代码时，显示警告
-                    mangle:true,
+                    mangle:false,
                     drop_debugger: true,
                     drop_console: true,//默认 false. 传true的话会干掉console.*函数
                     // comparisons: false //把结果必然的运算优化成二元运算，例如!(a <= b) → a > b (只有设置了 unsafe_comps时才生效)；尽量转成否运算。例如 a = !b && !c && !d && !e → a=!(b||c||d||e)
@@ -154,7 +164,8 @@ module.exports={
             filename:"index.html",
             // chunks: ['index', 'vendro'], //chunks主要用于多入口文件，当你有多个入口文件，那就回编译后生成多个打包后的文件，那么chunks 就能选择你要使用那些js文件
             hot:true,
-            chunksSortMode:"auto"
+            chunksSortMode:"auto",
+            favicon:"favicon.ico"
         }),
         // new compressionPlugin(),
         new webpack.LoaderOptionsPlugin({
