@@ -4,16 +4,13 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
-    "html-loader": "^0.5.5",
-    "html-withimg-loader": "^0.1.16",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "uglifyjs-webpack-plugin": "^2.0.1"
   },
   "scripts": {
-    "start": "rm -rf ./dist &&  webpack --progress --mode development",
+    "start": "webpack --progress --mode development",
     "dev": "webpack-dev-server --progress --mode development",
     "build": "webpack --progress --mode production"
   },

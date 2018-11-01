@@ -37,15 +37,6 @@ module.exports={
     module: {
         rules: [
             {
-                test: /\.(html)$/,
-                use: {
-                    loader: 'html-loader',
-                    options: {
-                        attrs: ['img:src', 'img:data-src', 'audio:src'],
-                        minimize: true
-                    }
-                }
-            },{
                 test:/\.(js|jsx)$/i,
                 exclude:path.resolve(__dirname, "node_modules"),
                 loader:"babel-loader",
@@ -87,14 +78,14 @@ module.exports={
                     {
                         loader:'url-loader',
                         options:{
-                            // fillback:"file-loader",
-                            // outputPath:'images',
-                            name: 'images/[name].[hash:4].[ext]',
+                            fillback:"file-loader",
+                            outputPath:'images',
+                            name: '[name].[hash:4].[ext]',
                             limit:8192,
                             // publicPath:'dist/images'
                         }
                     }
-                ],
+                ]
             },{
                 test:/\.svg$/i,
                 include: path.resolve(__dirname, 'src/svg'),

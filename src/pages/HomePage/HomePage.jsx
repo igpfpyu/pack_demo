@@ -41,7 +41,7 @@ export default class HomePage extends Component {
                    <Header style={{ background: '#fff', padding: 0 }} />
                    <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                        <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
-                           <img src="../../images/photo01.jpg" alt="abc" height={200} />
+                           <img src={require("../../images/photo01.jpg")} alt="abc" height={200} />
                            ...
                            <br />
                            Really
