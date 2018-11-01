@@ -5,11 +5,13 @@
   "main": "index.js",
   "dependencies": {
     "react": "16.5.2",
-    "react-dom": "16.5.2"
+    "react-dom": "16.5.2",
+    "uglifyjs-webpack-plugin": "^2.0.1"
   },
   "scripts": {
-    "start": "rm -rf ./dist && webpack --mode development",
-    "dev": "webpack-dev-server --mode development"
+    "start": "rm -rf ./dist &&  webpack --progress --mode development",
+    "dev": "webpack-dev-server --progress --mode production",
+    "build": "webpack --progress --mode production"
   },
   "eslintConfig": {
     "extends": "react-app"
