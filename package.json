@@ -7,10 +7,12 @@
     "file-loader": "^2.0.0",
     "react": "16.5.2",
     "react-dom": "16.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "uglifyjs-webpack-plugin": "^2.0.1"
   },
   "scripts": {
-    "start": "webpack --progress --mode development",
+    "start": "rm -rf ./dist && webpack --progress --mode development",
     "dev": "webpack-dev-server --progress --mode development",
     "build": "webpack --progress --mode production"
   },

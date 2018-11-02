@@ -118,27 +118,27 @@ module.exports={
         },
         splitChunks:{
             //chunks:"all",//这表示将选择哪些块进行优化，有效值为all，async和initial。或者提供更多控制功能。返回值将指示是否包括每个块chunk=> chunk.name==='vendor'?
-            // minSize: 30000,     //要生成的块的最小大小（以字节为单位）
+            minSize: 30000,     //要生成的块的最小大小（以字节为单位）
             //minChunks: 1,       //分割前必须共享模块的最小块数
             // maxAsyncRequests: 5,            //按需加载时的最大并行请求数
             // maxInitialRequests: 3,          //入口点处的最大并行请求数
             //name:true,                      //拆分块的名称。提供true将基于块和缓存组密钥自动生成名称module=>module.name
             // filename:'newVendor',
             cacheGroups: {
-                // default:{
-                //     minChunks:2,
-                //     priority:-20,
-                //     reuseExistingChunk:true
-                // },
+                default:{
+                    minChunks:2,
+                    priority:-20,
+                    reuseExistingChunk:true
+                },
                 vendor:{
                     chunks:"all",
                     test: /[\\/]node_modules[\\/]/,
                     name:"lib/vendor",
                     minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
                     maxInitialRequests: 5,
-                    minSize: 0,
-                    priority:100,
-                    reuseExistingChunk:true     //已经存在的块，即如果满足条件的块已经存在就使用已有的，不再创建一个新的块
+                    // minSize: 0,
+                    priority:10,
+                    // reuseExistingChunk:true     //已经存在的块，即如果满足条件的块已经存在就使用已有的，不再创建一个新的块
                 }
             }
         }
