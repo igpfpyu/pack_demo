@@ -1,0 +1,33 @@
+.dis_center(@argu){
+  display: flex;
+  flex-direction:@argu;
+  align-items:center;
+  justify-content:center;
+
+}
+#root{
+  height:100%;
+  margin:0;
+  padding:0;
+  background-color:#61dafb;
+  .dis_center(@argu:row)
+}
+.login_box {
+  width: 500px;
+  background-color: #fff;
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding:20px;
+  .dis_center(@argu:column)
+}
+.input_box{
+  width:100%;
+}
+.input_item{
+  width:100%;
+  padding-bottom:20px;
+}
+.btn_type{
+  height:46px;
+  font-size:20px;
+}
