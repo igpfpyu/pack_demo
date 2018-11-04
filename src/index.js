@@ -3,21 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
-import {
-    Router,
-    Route,
-    Switch
-} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
-import HomePage from "./pages/HomePage/HomePage";
 ReactDOM.render(
-    <BrowserRouter basename="/">
-        <div>
-            <Switch>
-                <Route path="/" component={App} />
-                <Route path="/HomePage" component={HomePage} />
-            </Switch>
-        </div>
+    <BrowserRouter>
+        <App />
     </BrowserRouter>,
     document.getElementById('root'));
 

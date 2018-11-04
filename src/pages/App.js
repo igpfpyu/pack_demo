@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
-import './App.css';
-import {Router, Route} from 'react-router';
+import {Switch,Router, Route, BrowserRouter} from "react-router-dom";
 import Login from './Login/Login';
-import HomePage from './HomePage/HomePage';
-// const isLogin=false;
-class App extends Component {
+import HomePage from "./HomePage/HomePage";
+import './App.css';
+export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      isLogin:false
+    }
+  }
+  componentDidMount(){
+      console.log(this.props);
+  }
   render() {
+    let {isLogin}=this.state;
     return (
-        <Login/>
+      <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/index" component={HomePage}/>
+      </Switch>
     )
   }
 }
-
-export default App;

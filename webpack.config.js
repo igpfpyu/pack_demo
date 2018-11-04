@@ -176,6 +176,7 @@ module.exports={
         // hot: true,
         inline:true,
         compress: true,
-        port:9001
+        port:9001,
+        historyApiFallback:true //解决页面刷新
     }
 };

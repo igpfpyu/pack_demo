@@ -9,11 +9,19 @@ const {Header, Content, Footer, Sider}=Layout
 const {Item}=Menu;
 import './HomePage_css.less';
 export default class HomePage extends Component {
-   render(){
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount(){
+        console.log(this.props)
+        console.log(location)
+    }
+
+    render(){
        return (
            <Layout>
                <Sider style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
-                   <div className="logo"></div>
+                   <div className="logo">logo</div>
                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
                        <Item key="1">
                            <Icon type="user" />
