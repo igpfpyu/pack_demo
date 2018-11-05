@@ -12,7 +12,7 @@
     "uglifyjs-webpack-plugin": "^2.0.1"
   },
   "scripts": {
-    "start": "webpack --progress --mode development",
+    "start": "rm -rf ./dist && webpack --progress --mode development",
     "dev": "webpack-dev-server --progress --mode development",
     "build": "webpack --progress --mode production"
   },

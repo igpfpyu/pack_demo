@@ -11,5 +11,6 @@
     <orderEntry type="library" name="@types/react" level="application" />
     <orderEntry type="library" name="@types/react-native" level="application" />
     <orderEntry type="library" name="@types/webpack" level="application" />
+    <orderEntry type="library" name="@types/react-router" level="application" />
   </component>
 </module>
