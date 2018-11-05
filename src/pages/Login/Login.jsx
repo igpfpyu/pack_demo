@@ -30,13 +30,15 @@ export default class Login extends Component{
                                    suffix="X"
                                    placeholder="请输入帐号"
                                    onKeyUp={ev=>this.setState({useName:ev.target.value})}
-                                   onBlur={ev=>this.useNameBlur(ev)}
+                                   onBlur={ev=>this.isUserInfo(ev.target.value, "useName")}
 
                             />
                         </div>
                         <div className="input_item">
                             <Input size="large" addonBefore={<label>密码</label>} type="password"
                                    defaultValue=""
+                                   onKeyUp={ev=>this.setState({usePin:ev.target.value})}
+                                   onBlur={ev=>this.isUserInfo(ev.target.value, "usePin")}
                                placeholder="请输入密码"
                             />
                         </div>
@@ -49,27 +51,32 @@ export default class Login extends Component{
             </div>
         )
     }
-    useNameBlur(ev){
-        if(isNull(ev.target.value)){
-            this.setState({
-                message:"请输入用户名",
-                isLogin:true
-            });
+    isUserInfo(pass, any){
+        if(isNull(pass)){
+            if(any==="useName"){
+                this.setState({
+                    message:"请输入用户名",
+                    isLogin:true
+                });
+            }else if(any === "usePin"){
+                this.setState({
+                    message:"请输入密码",
+                    isLogin:true
+                });
+            }
         }else{
             this.setState({
                 isLogin:false
             });
         }
-    };
+    }
     loginClick(){
-        if(isNull(this.state.useName) || isNull(this.state.usePin)){
-            this.setState({
-                isLogin:true
-            })
-        }else{
-            this.props.history.push('/index');
-        }
 
+        this.setState({
+            isLogin:false
+        })
+        console.log('aaaa')
+        this.props.history.push('/index');
     }
 
 }
