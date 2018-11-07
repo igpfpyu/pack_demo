@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import App from './App';
+import Login from "./pages/Login/Login";
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <Switch>
+            <Route path="/" component={App}/>
+            <Route path="/login" component={Login} />
+            <Route path="/404" component={noPage} />
+        </Switch>
     </BrowserRouter>,
     document.getElementById('root'));
 

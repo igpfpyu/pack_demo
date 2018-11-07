@@ -14,7 +14,9 @@ export default class Login extends Component{
             usePin:"",
             isLogin:false,
             message:"请输入信息"
-        }
+        };
+        this.useNameRef=React.createRef();
+        this.usePinRef=React.createRef();
     }
 
     render(){
@@ -31,6 +33,7 @@ export default class Login extends Component{
                                    placeholder="请输入帐号"
                                    onKeyUp={ev=>this.setState({useName:ev.target.value})}
                                    onBlur={ev=>this.isUserInfo(ev.target.value, "useName")}
+                                   ref={this.useNameRef}
 
                             />
                         </div>
@@ -39,7 +42,8 @@ export default class Login extends Component{
                                    defaultValue=""
                                    onKeyUp={ev=>this.setState({usePin:ev.target.value})}
                                    onBlur={ev=>this.isUserInfo(ev.target.value, "usePin")}
-                               placeholder="请输入密码"
+                                   placeholder="请输入密码"
+                                   ref={this.usePinRef}
                             />
                         </div>
                     </div>
@@ -53,17 +57,10 @@ export default class Login extends Component{
     }
     isUserInfo(pass, any){
         if(isNull(pass)){
-            if(any==="useName"){
-                this.setState({
-                    message:"请输入用户名",
-                    isLogin:true
-                });
-            }else if(any === "usePin"){
-                this.setState({
-                    message:"请输入密码",
-                    isLogin:true
-                });
-            }
+            this.setState({
+                message:"请输入"+(any==="useName"?"用户名":"密码"),
+                isLogin:true
+            });
         }else{
             this.setState({
                 isLogin:false
@@ -71,12 +68,25 @@ export default class Login extends Component{
         }
     }
     loginClick(){
-
-        this.setState({
-            isLogin:false
-        })
-        console.log('aaaa')
-        this.props.history.push('/index');
+        let {useName, usePin}=this.state;
+        if(isNull(useName)){
+            this.setState({
+                message:"请输入用户名",
+                isLogin:true
+            });
+            this.useNameRef.current.focus();
+            return false;
+        }else if(isNull(usePin)){
+            this.setState({
+                message:"请输入密码",
+                isLogin:true
+            });
+            this.usePinRef.current.focus();
+            return false;
+        }
+        console.log('aaaaaa');
+        console.log(this.props.history);
+        this.props.history.push('/home');
     }
 
 }

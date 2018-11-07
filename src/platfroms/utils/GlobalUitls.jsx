@@ -1,6 +1,6 @@
 export const isNull=(pass)=>{
-    pass=(pass instanceof Array) || (pass instanceof Object) ? JSON.stringify(pass) : pass;
-    switch (String(pass)){
+    let newPass=(pass instanceof Array) || (pass instanceof Object) ? JSON.stringify(pass) : String(pass);
+    switch (newPass){
         case "null":
         case "undefined":
         case "defined":

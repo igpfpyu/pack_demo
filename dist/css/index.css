@@ -5,8 +5,85 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.main_login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #61dafb;
+}
+.login_box {
+  width: 500px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.input_box {
+  width: 100%;
+}
+.input_item {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.btn_type {
+  height: 46px;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.warning_box {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.6s ease-in-out 0s;
+}
+.warningUp {
+  opacity: 1;
+  height: 40px;
+}
+
+.logo {
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3) url(/images/photo01.02ec.jpg) no-repeat top left;
+  margin: 16px;
+}
+
+.nav-text {
+  color: #fff;
+  display: inline;
 }
 
 .App {
@@ -58,17 +135,5 @@ code {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
-}
-
-.login_box {
-  width: 100%;
-  height: 100%;
-  background-color: #61dafb;
-}
-
-.logo {
-  height: 100px;
-  background: rgba(255, 255, 255, 0.3) url(/images/photo01.02ec.jpg) no-repeat top left;
-  margin: 16px;
 }
 
