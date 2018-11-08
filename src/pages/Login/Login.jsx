@@ -18,7 +18,8 @@ export default class Login extends Component{
         this.useNameRef=React.createRef();
         this.usePinRef=React.createRef();
     }
-
+    componentDidMount(){
+    }
     render(){
         let {message}=this.state;
         return (
@@ -84,9 +85,8 @@ export default class Login extends Component{
             this.usePinRef.current.focus();
             return false;
         }
-        console.log('aaaaaa');
-        console.log(this.props.history);
-        this.props.history.push('/home');
+        console.log(this.props);
+        this.props.history.push('/');
     }
 
 }

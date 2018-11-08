@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import App from './App';
+import {BrowserRouter, Route,Switch, Redirect} from 'react-router-dom';
+import App from './pages/App';
 import Login from "./pages/Login/Login";
+import './index.css';
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={App}/>
-            <Route path="/login" component={Login} />
-            <Route path="/404" component={noPage} />
+            <Route exact path="/login" component={Login}/>
+            <Route path="/" component={App} />
+            {/*<Route exact path='noMatch' component={NoPage}/>*/}
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'));
