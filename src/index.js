@@ -8,9 +8,10 @@ import './index.css';
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route exact path="/login" component={Login}/>
+            <Route path="/login" component={Login}/>
             <Route path="/" component={App} />
-            {/*<Route exact path='noMatch' component={NoPage}/>*/}
+            <Redirect to="/"/>
+            {/*<Route path='noMatch' component={NoPage}/>*/}
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'));
