@@ -1,73 +1,19 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-#root {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-.App {
-  text-align: center;
-}
-.App-logo {
-  -webkit-animation: App-logo-spin infinite 20s linear;
-          animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App-link {
-  color: #61dafb;
-}
-@-webkit-keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+.header-height {
+  background: transparent;
+  padding: 0 1vh;
+  height: 5.2vh;
+  line-height: 5.2vh;
 }
 .logo {
-  height: 100px;
-  background: rgba(255, 255, 255, 0.3) url(/images/photo01.02ec.jpg) no-repeat top left;
-  margin: 16px;
+  width: 12vh;
+  height: 12vh;
+  margin: 4vh 0 2vh 4vh;
+}
+.logo a {
+  display: block;
+}
+.logo a img {
+  width: 100%;
 }
 
 .pubIndex {
@@ -76,33 +22,15 @@ code {
 }
 
 .main_login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #61dafb;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(0), color-stop(0%, #39a1bf), to(#00ffd5));
+  background-image: -webkit-linear-gradient(0, #39a1bf 0%, #00ffd5 100%);
+  background-image: -o-linear-gradient(0, #39a1bf 0%, #00ffd5 100%);
+  background-image: linear-gradient(0, #39a1bf 0%, #00ffd5 100%);
 }
 .login_box {
-  width: 500px;
-  background-color: #fff;
-  -webkit-box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  padding: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -134,5 +62,25 @@ code {
 .warningUp {
   opacity: 1;
   height: 40px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+.ant-layout {
+  height: 100%;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 

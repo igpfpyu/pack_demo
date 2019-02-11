@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {
     Button,
     Input,
-    Alert
+    Alert,
+    Row,
+    Col
 } from 'antd';
 import './Login_css.less';
 import {isNull} from '../../platfroms/utils/GlobalUitls';
@@ -23,37 +25,40 @@ export default class Login extends Component{
     render(){
         let {message}=this.state;
         return (
-            <div className="main_login">
-                <div className="login_box">
-                    <h2>登录</h2>
-                    <div className="input_box">
-                        <div className="input_item">
-                            <Input addonBefore={<label>登录</label>} size="large" type="text"
-                                   defaultValue=""
-                                   suffix="X"
-                                   placeholder="请输入帐号"
-                                   onKeyUp={ev=>this.setState({useName:ev.target.value})}
-                                   onBlur={ev=>this.isUserInfo(ev.target.value, "useName")}
-                                   ref={this.useNameRef}
+                <Row  className="main_login" type="flex" justify="space-around" align="middle">
+                    <Col span={3} />
+                    <Col span={18}>
+                        <div className="login_box">
+                            <div className="input_box">
+                                <div className="input_item">
+                                    <Input addonBefore={<label>登录</label>} size="large" type="text"
+                                           defaultValue=""
+                                           suffix="X"
+                                           placeholder="请输入帐号"
+                                           onKeyUp={ev=>this.setState({useName:ev.target.value})}
+                                           onBlur={ev=>this.isUserInfo(ev.target.value, "useName")}
+                                           ref={this.useNameRef}
 
-                            />
+                                    />
+                                </div>
+                                <div className="input_item">
+                                    <Input size="large" addonBefore={<label>密码</label>} type="password"
+                                           defaultValue=""
+                                           onKeyUp={ev=>this.setState({usePin:ev.target.value})}
+                                           onBlur={ev=>this.isUserInfo(ev.target.value, "usePin")}
+                                           placeholder="请输入密码"
+                                           ref={this.usePinRef}
+                                    />
+                                </div>
+                            </div>
+                            <Button onClick={()=>this.loginClick()} className="btn_type" type="primary" block>登录</Button>
+                            <div className={`warning_box ${this.state.isLogin?'warningUp':null}`}>
+                                <Alert type="warning" message={message}/>
+                            </div>
                         </div>
-                        <div className="input_item">
-                            <Input size="large" addonBefore={<label>密码</label>} type="password"
-                                   defaultValue=""
-                                   onKeyUp={ev=>this.setState({usePin:ev.target.value})}
-                                   onBlur={ev=>this.isUserInfo(ev.target.value, "usePin")}
-                                   placeholder="请输入密码"
-                                   ref={this.usePinRef}
-                            />
-                        </div>
-                    </div>
-                    <Button onClick={()=>this.loginClick()} className="btn_type" type="primary" block>登录</Button>
-                    <div className={`warning_box ${this.state.isLogin?'warningUp':null}`}>
-                        <Alert type="warning" message={message}/>
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                    <Col span={3} />
+                </Row>
         )
     }
     isUserInfo(pass, any){

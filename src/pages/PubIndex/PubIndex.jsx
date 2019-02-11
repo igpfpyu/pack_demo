@@ -4,7 +4,7 @@ export default class PubIndex extends Component{
     render(){
         return (
             <div className="pubIndex">
-                <p>Pub_Index</p>
+                <p>基本信息</p>
             </div>
         );
     }
