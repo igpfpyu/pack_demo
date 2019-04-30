@@ -1,0 +1,47 @@
+.header-height{
+  background: transparent;
+  padding:0 1vh;
+  height:5.2vh;
+  line-height:5.2vh;
+  .trigger{
+    cursor: pointer;
+    transition: color .3s;
+    font-size:2.8vh;
+  }
+}
+.leftNav{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:100%;
+  div.logo{
+    align-items:center;
+    justify-content: center;
+    a{
+      display: block;
+      width:12vh;
+      height:12vh;
+      overflow:hidden;
+      margin: 6vh 0 2vh 6vh;
+      img{
+        width: 100%;
+      }
+    }
+  }
+  div.left_nav_box{
+    height:100%;
+    overflow-y:auto;
+  }
+  div.user_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height:60px;
+    align-items:center;
+    button{
+      line-height:0;
+      padding-left:2vh;
+      padding-right:2vh;
+    }
+  }
+}

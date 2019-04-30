@@ -1,23 +1,17 @@
 import  React, {Component} from 'react';
-import {Switch, Route, Link, Redirect} from 'react-router-dom';
 import {
-    Button,
-    Layout,
-    Menu,
-    Icon,
-    Row,
-    Col
+    Layout, Icon, Button
 } from 'antd';
-const {Header, Content, Footer, Sider}=Layout
-const {Item}=Menu;
+const {Content, Footer, Sider}=Layout;
+const ButtonGroup=Button.Group;
 import './App.less';
 import {MenuLink, ContentRouter} from './MainRouters/MainBouter';
+import BaseHeader from '../components/BaseHeader/BaseHeader';
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state={
             collapsed:true
-
         }
     }
     componentDidMount(){
@@ -27,46 +21,55 @@ export default class App extends Component {
 
     }
     collapse(collapsed, type){
-        console.log(collapsed);
+        // this.setState({
+        //     collapsed:!collapsed
+        // });
+        // console.log(type);
+    }
+    toggle(){
         this.setState({
-            collapsed:!collapsed
-        });
-        console.log(type);
+            collapsed:!this.state.collapsed
+        })
     }
     render(){
-        let {url}=this.props.match;
-        console.log(url);
         let {collapsed}=this.state;
         return (
             <Layout>
                 <Sider
                        breakpoint="xs"
                        collapsedWidth="0"
-                       reverseArrow={true}
+                       reverseArrow={false}
                        width="24vh"
-                       collapsible={collapsed}
+                       collapsed={collapsed}
+                       trigger={null}
+                       collapsible
                        onBreakpoint={(broken) => { console.log(broken); }} //触发响应式布局断点时的回调
                        onCollapse={(collapsed, type) => this.collapse(collapsed, type) } //展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发
                 >
-                    <div className="logo">
-                        <a href="javascript:;" title="logo">
-                            <img src={`${require('../images/logo.png')}`} />
-                        </a>
+                    <div className="leftNav">
+                        <div className="logo">
+                                <a href="javascript:;" title="logo">
+                                    <img src={`${require('../images/logo.png')}`} />
+                                </a>
+                        </div>
+                        <div className="left_nav_box"><MenuLink /></div>
+                        <div className="user_info">
+                            <ButtonGroup>
+                                <Button size="small"><Icon type="user" /></Button>
+                                <Button size="small"><Icon type="setting" /></Button>
+                            </ButtonGroup>
+                        </div>
                     </div>
-                    <MenuLink />
                 </Sider>
                 <Layout>
-                    {/*<Header theme="light" className="header-height">*/}
-                        {/*<Row >*/}
-                            {/*<Col span={18}>*/}
-                                {/*<a>没有帐号！！！</a>*/}
-                            {/*</Col>*/}
-                            {/*<Col span={6}>*/}
-                                {/*<p style={{textAlign:"right"}}><a href="javascript:;" title="登录">登录</a> </p>*/}
-                            {/*</Col>*/}
-                        {/*</Row>*/}
-                    {/*</Header>*/}
-                    <Content style={{ margin: '24px 16px 0', overflowY:"auto" }}>
+                    <BaseHeader className="header-height">
+                        <Icon
+                            className="trigger"
+                            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                            onClick={()=>this.toggle()}
+                        />
+                    </BaseHeader>
+                    <Content style={{overflowY:"auto"}}>
                         <ContentRouter />
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
@@ -76,4 +79,6 @@ export default class App extends Component {
             </Layout>
         );
     }
+
 }
+//axios
